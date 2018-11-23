@@ -4,17 +4,13 @@ import os
 import pylab
 
 if __name__ == "__main__":
-    lrs = [.001, .005,.01, .05, .1]
-    hiddensize = [256, 320, 516]
-    lstmlayers = [1, 2, 3, 4]
-    sequenceSizes = [200, 400, 800, 1200]
     losses = []
     labels =[]
     print("Starting Training")
     lr = .01
-    size = 10
-    layercount = 1
-    seqSize = 10
+    size = 516
+    layercount = 2
+    seqSize = 1200
     dirname = "TrainingResults\\" + \
               "l{}, s{}, lr{}, seq{}".format(layercount, size, lr, seqSize)
     try:
@@ -24,10 +20,10 @@ if __name__ == "__main__":
         print(dirname + " already exists")
     print("Starting, LR: {}  HS:{} LSTMcount:{}".format(lr, size, layercount))
     rnn = Model.RNN(size, layercount, 1)
-    Training.init(rnn, "MusicTensors.pickle", seqSize , lr, ngpu=1)
+    Training.init(rnn, "Data\PreparedMusic\MusicTensors.pickle", seqSize , lr, ngpu=1)
     startTime = time.time()
     loss = Training.train_set(1000, 5, 10, 10, 50, 50, "Model_lr{}_hs{}_ls{}__{}___".format(lr, size, layercount, seqSize), dir=dirname)
-    print("RunTime: " + str(time.time()- startTime))
+    print("Finished Training, RunTime: " + str(time.time()- startTime))
     losses.append(loss)
     labels.append("l{}, s{}, lr{}, seq{}".format(layercount, size, lr, seqSize))
     #  Creates 20 songs of varrying temperatures

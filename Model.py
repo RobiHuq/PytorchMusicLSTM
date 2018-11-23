@@ -55,6 +55,5 @@ def generate(model, songname, temperature, primer=[-1], length=500, dir="Generat
             top_i = torch.multinomial(output_dist, 1)[0]
             song.append(top_i)
             inp = top_i
-        print(song)
         miditovector.noteIndexesToSong(song, songname, dir=dir)
         model.training = True

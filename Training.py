@@ -103,7 +103,7 @@ def train_set(epochs, batch_size, print_every, plot_every, synthesize_every, sav
                 print(train_output + "Created")
             except FileExistsError:
                 print(train_output + " already exists")
-
+            print("Generating Samples")
             for i in range(1, 21):
                 Model.generate(model, "{}___temp{}.mid".format(name, i / 20), i / 20, length=1200, onGPU=True, dir=train_output)
 
