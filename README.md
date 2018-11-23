@@ -1,7 +1,8 @@
 # PytorchMusicLSTM
 A project I made to better understand LSTM networks. 
 
-This is currently a work in progress, I plan it make the program more easily tweakable, and eventually incorperate music with multiple instruments.
+
+This is currently a work in progress, I plan it make the program more easily tweakable, and eventually incorperate music with multiple instruments. It also requires a gpu to use at the moment, sorry.
 
 Music files are midi0 format, meaning there is 128 different frequences on a single instrument(Piano).
 
